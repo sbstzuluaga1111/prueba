@@ -1,151 +1,93 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
+    <div class="d-flex justify-center">
+      <h1>Fate</h1>
+    </div>
+    
+    <div v-if="loading" class="loading-container d-flex justify-center align-center">
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    </div>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
+    <v-row v-else>
       <v-col
-        class="mb-5"
+        v-for="servant in servants"
+        :key="servant.id"
         cols="12"
+        md="4"
+        lg="4"
       >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
+        <v-card class="servant-card">
+          <v-img
+            :src="getFaceUrl(servant)"
+            alt="Servant Face"
+            height="300px"
+            contain
+            class="servant-image"
+          ></v-img>
+          <v-card-title>{{ servant.name }}</v-card-title>
+          <v-card-subtitle>Clase: {{ servant.className }}</v-card-subtitle>
+          <v-card-text>
+            <p>Rareza: {{ servant.rarity }}</p>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  export default {
-    name: 'HelloWorld',
-
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
-    }),
-  }
+export default {
+  data() {
+    return {
+      servants: [],
+      loading: true,
+    };
+  },
+  created() {
+    fetch("https://api.atlasacademy.io/export/NA/nice_servant.json")
+      .then((response) => response.json())
+      .then((data) => {
+        this.servants = data;
+        this.loading = false;
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        this.loading = false;
+      });
+  },
+  methods: {
+    getFaceUrl(servant) {
+      return servant.extraAssets?.charaGraph?.ascension[4] || servant.extraAssets?.charaGraph?.ascension[3] || servant.extraAssets?.charaGraph?.ascension[2] || servant.extraAssets?.charaGraph?.ascension[1];
+    },
+  },
+};
 </script>
+
+<style scoped>
+.v-container {
+  padding: 10px;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.servant-card {
+  max-width: 400px;
+  
+}
+
+.servant-image {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+</style>
