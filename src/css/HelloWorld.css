@@ -1,0 +1,29 @@
+.v-container {
+    padding: 10px;
+  }
+  
+  .loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .servant-card {
+    max-width: 400px;
+  }
+  
+  .servant-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .espacio {
+    margin-top: 20px;
+  }
