@@ -27,3 +27,7 @@
   .espacio {
     margin-top: 20px;
   }
+
+  .nav{
+    border-radius: 1rem !important;
+  }
