@@ -7,7 +7,7 @@ export default {
   },
   data() {
     return {
-      titulo: "Fate/Grand Order",
+      titulo: "Fate/Grand Order (Personajes)",
       servants: [],
       loading: true,
     };

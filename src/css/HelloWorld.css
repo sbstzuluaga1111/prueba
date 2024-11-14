@@ -23,10 +23,6 @@
     height: 400px;
     object-fit: cover;
   }
-  
-  .espacio {
-    margin-top: 20px;
-  }
 
   .nav{
     border-radius: 1rem !important;

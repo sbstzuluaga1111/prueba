@@ -1,9 +1,8 @@
-<!-- HelloWorld.vue -->
 <template>
    
   <v-container><v-app-bar class="d-flex justify-center nav">
     <div class="d-flex justify-center">
-      <h1>{{ titulo }}</h1>
+      <h3>{{ titulo }}</h3>
     </div></v-app-bar>
 
     <FiltroServants
@@ -14,5 +13,5 @@
   </v-container>
 </template>
 
-<script src="../scripts/HelloWorld.js"></script>
+<script src="../scripts/Personajes"></script>
 <style src="../css/HelloWorld.css"></style>
