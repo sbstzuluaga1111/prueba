@@ -1,8 +1,14 @@
-.v-container {
-    padding: 10px;
-  }
+.v-main {
+  padding-top: 0 !important;  /* Eliminar padding superior */
+  margin-top: 0 !important;   /* Eliminar margen superior */
   
-  .loading-container {
+}
+
+.justo{
+  transform: translateY(75px) !important;
+}
+ 
+ .loading-container {
     position: fixed;
     top: 0;
     left: 0;

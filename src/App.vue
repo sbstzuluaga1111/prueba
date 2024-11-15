@@ -1,18 +1,18 @@
 <template>
   <v-app>
     <v-main>
-      <HomeView />
+      <NavGeneral />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HomeView from './views/HomeVista.vue';
+import NavGeneral from '@/views/NavGeneral.vue';
 
 export default {
   name: 'App',
   components: {
-    HomeView,
+    NavGeneral,
   },
 };
 </script>

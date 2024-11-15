@@ -1,0 +1,14 @@
+.v-main {
+  padding-top: 0 !important;  /* Make sure no extra padding-top */
+  margin-top: 0 !important;   /* Remove margin-top */
+}
+
+.justo{
+  transform: translateY(70px) !important;
+}
+
+.home h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+  }
