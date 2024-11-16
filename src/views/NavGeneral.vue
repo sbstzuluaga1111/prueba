@@ -104,7 +104,7 @@ export default {
         return {
           paddingTop: '80px',
           height: height,
-          overflowY: 'hidden',
+          
         };
       } else {
         return {
@@ -112,7 +112,7 @@ export default {
           marginLeft: this.drawer ? '256px' : '0',
           width: this.drawer ? 'calc(100% - 256px)' : '100%',
           height: height,
-          overflowY: 'hidden',
+          
         };
       }
     },

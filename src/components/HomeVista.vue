@@ -52,22 +52,13 @@ export default {
 </script>
 
 <style scoped>
-.text-shadow-2 {
-  text-shadow: 2px 2px 8px rgba(2, 2, 2, 0.089);
-}
 
-.overlay {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
+
+
 
 .square-container {
   background-color: transparent;
-  border: 5px solid #42a5f5;
+  border: 5px solid #ffffffe3;
   padding: 5vw;
   width: 30vw;
   height: 30vw;
@@ -80,19 +71,21 @@ export default {
   max-width: 250px;
   max-height: 250px;
   box-shadow: 
-    0 0 10px #ffffff, 
-    0 0 20px #42a5f5, 
-    0 0 30px #000000, 
-    0 0 400px #42a5f5;
-  transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.square-container:hover {
-  box-shadow: 
     0 0 5px #42a5f5, 
     0 0 15px #ffffff, 
     0 0 25px #42a5f5, 
     0 0 500px #000000;
+  transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+
+
+.square-container:hover {
+  box-shadow: 
+  0 0 10px #ffffff, 
+    0 0 20px #42a5f5, 
+    0 0 30px #000000, 
+    0 0 400px #42a5f5;
   transform: rotate(0deg)!important;
 }
 
@@ -139,7 +132,4 @@ export default {
   }
 }
 
-.text-shadow-2 {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
 </style>
