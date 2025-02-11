@@ -6,12 +6,16 @@
     </v-app-bar>
 
     <v-navigation-drawer 
-      v-model="drawer" 
-      :temporary="isMobile" 
-      hide-overlay
-      elevation-2
-      :style="drawerStyle"
-    >
+  v-model="drawer" 
+  :temporary="isMobile" 
+  hide-overlay
+  :style="{
+    ...drawerStyle,
+    borderTopRightRadius: '2rem',
+  }"
+>
+
+
       <v-list>
         <v-list-item @click="goTo('/inicio')">
   <v-list-item-content>
